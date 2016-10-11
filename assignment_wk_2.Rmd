@@ -1,0 +1,26 @@
+---
+title: "Untitled"
+author: "Doug Weinstein"
+date: "October 11, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, results='hide', message=FALSE, warning=FALSE, cache=TRUE}
+  #install packages referenced by this script if not already installed
+  #http://stackoverflow.com/questions/4090169/elegant-way-to-check-for-missing-packages-and-install-them
+  list.of.packages <- c("leaflet")
+  new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+  if(length(new.packages)) install.packages(new.packages)
+  lapply(list.of.packages, require, character.only = TRUE)
+```
+
+## Disneyland Map
+```{r}
+library(leaflet)
+my_map<-leaflet() %>% addTiles() %>% addMarkers(lat=33.8121, lng=-117.9190,popup="Disneyland")
+my_map
+```
